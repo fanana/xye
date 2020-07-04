@@ -1,0 +1,4 @@
+[{<<"erlserial">>,
+  {git,"https://github.com/Darkkey/erlserial.git",
+       {ref,"80e248fd6b1f03aa3c4c8efeed44e0c9f7adf5bc"}},
+  0}].

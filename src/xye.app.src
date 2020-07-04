@@ -1,0 +1,14 @@
+{application, xye,
+ [{description, "XYE indoor unit simulator and protocol analyzer"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, {xye_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[{port, "/dev/ttyUSB0"}]},
+  {modules, []},
+  {licenses, ["GPL 3.0"]},
+  {links, []}
+ ]}.
