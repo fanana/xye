@@ -6,9 +6,12 @@ components of split VRF systems.
 Primary vendor seems to be Midea, but others vendors sell rebanded versions
 (e.g. FrigoLine, Mundo Clima, Daikin, ...).
 
-Tested with a old Midea CCM/01E and a Mundo Clima MUCSR-12-H.
+Tested with a old Midea CCM/01E and a Mundo Clima MUCSR-12-H8.
 
 ## Protocol
+
+The bus is using [RS-485][RS485] as physical layer, X is A, Y is B and E is GND.
+With 4800 baud, 8n1 (8 bits, no-parity, 1 stop bit).
 
 A master/slave model is used. The CCM polls all possible 64 unit ids. Per units a 130ms
 time slice is used (30ms for sending the query, followed by 100ms timeout, wating for an
@@ -101,6 +104,8 @@ Build:
 
     $ rebar compile
 
+Adjust your serial port in config/sys.config
+
 Run emulator with:
 
 	$ rebar3 shell --sname xye --setcookie secret
@@ -114,3 +119,5 @@ Use a Erlang remsh to test settings:
     (xye@xye)1> xye:t1(40).
     ok
     (xye@xye)2>
+
+[RS485]: https://en.wikipedia.org/wiki/RS-485
