@@ -54,7 +54,7 @@ Set:
 
 | Byte | Field           | Description                                                                                                |
 | ---- | --------------- | ---------------------------------------------------------------------------------------------------------- |
-| 0x06 | Oper Mode       | 0x80 - off, 0x88 - Cool, 0x82 - Dry, 0x84 - Heat, 0x81 - Fan                                               |
+| 0x06 | Oper Mode       | 0x00 - off, 0x80 - auto, 0x88 - Cool, 0x82 - Dry, 0x84 - Heat, 0x81 - Fan                                  |
 | 0x07 | Fan             | 0x80 - Auto, 0x01 - High, 0x02 - Medium, 0x03 - Low                                                        |
 | 0x08 | Set Temp        | °C (18°C), (0xff in Fan Mode)                                                                              |
 | 0x09 | Mode Flags      | 0x02 - Aux Heat (Turbo), 0x00 - norm, 0x01 - ECO Mode (sleep), 0x04 - SWING, 0x88 VENT                     |
@@ -74,7 +74,7 @@ Set:
 | 0x05 | destination     | 0 .. 0x3f - master device id                                                                               |
 | 0x06 | ????            | 0x30 - maybe capabilities                                                                                  |
 | 0x07 | capabilities    | 0x80 - extended temp (16 .. 32 °C), 0x10 has SWING                                                         |
-| 0x08 | Oper Mode       | 0x80 - off, 0x88 - Cool, 0x82 - Dry, 0x84 - Heat, 0x81 - Fan                                               |
+| 0x08 | Oper Mode       | 0x00 - off, 0x80 - auto, 0x88 - Cool, 0x82 - Dry, 0x84 - Heat, 0x81 - Fan                                  |
 | 0x09 | Fan             | 0x80 - Auto, 0x01 - High, 0x02 - Medium -0x03 Low                                                          |
 | 0x0A | Set Temp        | in °C                                                                                                      |
 | 0x0B | T1 Temp         | in 0.5 °C - 0x30                                                                                           |

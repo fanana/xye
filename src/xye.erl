@@ -159,7 +159,7 @@ handle_event(enter, _, _, _Data) ->
 handle_event(info, {data, _SerialPid, Bytes}, <<>>, Data) ->
     Now = erlang:monotonic_time(microsecond),
     {next_state, Bytes, Data#data{ts = Now}};
-handle_event(info, {data, Bytes}, Buffer, Data) ->
+handle_event(info, {data, _SerialPid, Bytes}, Buffer, Data) ->
     {next_state, <<Buffer/binary, Bytes/binary>>, Data};
 handle_event(state_timeout, recv, Buffer, #data{ts = TS} = Data0) ->
     Data = process(Buffer, Data0),
@@ -275,7 +275,6 @@ set_state(F, Id, Src, Dst, <<Oper, Fan, Temp, Mode, On, Off, 0>>,
 	   off = Off,
 	   mode = dec_ac_mode(Mode)
 	  },
-    %% send_ack --- TODO: check!!
     io:format("~s", [format_ac(AC, "")]),
     query_state(F, 3, Id, Src, Dst, AC),
     AC;
@@ -326,7 +325,6 @@ serialize_state(AC) ->
 	       locked -> 16#80;
 	       _      -> 16#00
 	   end,
-io:format("ater: ~p, Lock: ~p, ~p~n", [AC#xye.water, AC#xye.lock, Lock]),
     <<(AC#xye.cap1),
       (AC#xye.cap2),
       (enc_ac_oper(AC)),
